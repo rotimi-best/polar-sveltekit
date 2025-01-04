@@ -3,7 +3,7 @@ import {
   WebhookVerificationError,
   validateEvent,
 } from "@polar-sh/sdk/webhooks";
-import { RequestEvent } from "@sveltejs/kit";
+import type { RequestEvent } from "@sveltejs/kit";
 
 export interface CheckoutConfig {
   accessToken?: string;
