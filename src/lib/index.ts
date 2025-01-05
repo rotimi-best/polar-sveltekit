@@ -39,7 +39,7 @@ export const Checkout = ({
       );
     }
 
-    const success = successUrl ? new URL(successUrl) : undefined;
+    const success = successUrl ? new URL(successUrl, event.url) : undefined;
     if (success && includeCheckoutId) {
       success.searchParams.set("checkoutId", "{CHECKOUT_ID}");
     }
