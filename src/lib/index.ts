@@ -40,14 +40,17 @@ export const Checkout = ({
     }
 
     const success = successUrl ? new URL(successUrl, event.url) : undefined;
+
     if (success && includeCheckoutId) {
       success.searchParams.set("checkoutId", "{CHECKOUT_ID}");
     }
 
+    console.log("success", success?.toString());
+
     try {
       const result = await polar.checkouts.custom.create({
         productId,
-        successUrl,
+        successUrl: success?.toString(),
         customerId: url.searchParams.get("customerId") ?? undefined,
         customerEmail: url.searchParams.get("customerEmail") ?? undefined,
         customerName: url.searchParams.get("customerName") ?? undefined,
@@ -74,7 +77,7 @@ export const Checkout = ({
         headers: { Location: result.url },
       });
     } catch (error) {
-      console.error(error);
+      console.error("Catch checkout error", error);
       return new Response(null, { status: 500 });
     }
   };

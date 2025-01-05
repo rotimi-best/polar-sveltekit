@@ -1,6 +1,6 @@
 {
   "name": "polar-sveltekit",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Polar integration for SvelteKit",
   "license": "MIT",
   "main": "dist/index.js",
